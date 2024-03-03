@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package sso;
+
+option go_package = "sso.v1;ssov1";
+
+message User{
+  int64 id = 1;
+  string login = 2;
+  string email = 3;
+}

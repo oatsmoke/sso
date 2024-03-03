@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package sso;
+
+option go_package = "sso.v1;ssov1";
+
+import "sso/v1/user.proto";
+
+service UserProfile{
+  rpc Create(CreateRequest) returns(CreateResponse);
+  rpc Authentication(AuthenticationRequest) returns(AuthenticationResponse);
+  rpc Info(InfoRequest) returns(InfoResponse);
+}
+
+message CreateRequest{
+  string login = 1;
+  string password = 2;
+  string email = 3;
+}
+
+message CreateResponse{
+  int64 user_id = 1;
+}
+
+message AuthenticationRequest{
+  string login = 1;
+  string password = 2;
+}
+
+message AuthenticationResponse{
+  int64 user_id = 1;
+}
+
+message InfoRequest{
+  int64 user_id = 1;
+}
+
+message InfoResponse{
+  User user = 1;
+}
